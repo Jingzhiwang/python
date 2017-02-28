@@ -3,12 +3,12 @@ import zipfile
 from itertools import product
 
 
-print()
 
-result=input("What type of cracking ('brute force','dictionary','both','q'):")
 
 
 def open_dict_file():
+    '''this function will remind to open the txt file
+    '''
     file=input("Enter dictionary file name: ")
     dict_file=open(file)
     return dict_file
@@ -21,6 +21,8 @@ def open_dict_file():
     
     
 def open_zip_file():
+    '''this function will remind to open the zip file
+    '''
     file=input("Enter zipfile name: ")
     zip_file=zipfile.ZipFile(file)
     return zip_file
@@ -29,8 +31,9 @@ def open_zip_file():
     
     
 def brute_force_attack(zip_file):
+    '''using brute_force_attack way to find the password'''
     letter=("abcdefghijklmnopqrstuvwxyz")
-    for i in letter:
+     
         
     
     
@@ -39,11 +42,13 @@ def brute_force_attack(zip_file):
     
     
 def dictionary_attack(zip_file, dict_file):
-    for line in dict_file.readline():
+    '''using dictionary way to find the password'''
+    for line in dict_file.readline():#read each line of the txt file
         password=line.strip()
         try:
-            zip_file.extractall(pwd=password.encode())
-            print ("password is:" password)
+            zip_file.extractall(pwd=password.encode())#try to find the password,
+            print ("password is:"+password)#if the password right, print
+            
             exit(0)
             
         except:
@@ -52,25 +57,27 @@ def dictionary_attack(zip_file, dict_file):
 
 
 
-while:
+while True:
         
       print("Cracking zip files.")
 
-      print("Warning cracking passwords is illegal due to law XXXXX\
-            and has a prison term of XXXXX")
+      print("Warning cracking passwords is illegal due to law\
+      Computer Fraud and Abuse Act (CFAA)\
+            and has a prison term of 20 years")
+      
     
 
       way=input("What type of cracking ('brute force','dictionary','both','q'): ")
 
-      if way=='brute force':
+      if  way=='brute force':     #using brute force to find the password
           print("Brute Force Cracking")
           zip_file = open_zip_file()  
-          start = time.process_time()
-          brute_force_attack(zip_file) 
+          start = time.process_time()  
+          brute_force_attack(zip_file) #the function 
           end = time.process_time()
-          print("Elapsed time (sec):"(end-start))
+          print("Elapsed time (sec):"(end-start))  #print the time
           
-      elif if way == 'dictionary':
+      elif  way == 'dictionary': #using dictionary to find the password
            
             print("Dictionary Cracking")
        
@@ -78,6 +85,23 @@ while:
             
             zip_file = open_zip_file()
             start = time.process_time()
-            dictionary_attack(zip_file, dict_file) 
+            dictionary_attack(zip_file, dict_file) #the function 
+            end = time.process_time()
+            print("Elapsed time (sec):"(end - start)) #print the time
+            
+            
+      elif  way == 'both':
+            print("Both Brute Force and Dictionary attack.")
+            dict_file = open_dict_file()
+            zip_file = open_zip_file()
+            start = time.process_time()
+            dictionary_attack(zip_file, dict_file)
             end = time.process_time()
             print("Elapsed time (sec):"(end - start))
+       
+       
+       
+       
+      elif way=='q':
+           break
+       
