@@ -1,0 +1,83 @@
+import time
+import zipfile
+from itertools import product
+
+
+print()
+
+result=input("What type of cracking ('brute force','dictionary','both','q'):")
+
+
+def open_dict_file():
+    file=input("Enter dictionary file name: ")
+    dict_file=open(file)
+    return dict_file
+   
+    
+
+    
+    
+    
+    
+    
+def open_zip_file():
+    file=input("Enter zipfile name: ")
+    zip_file=zipfile.ZipFile(file)
+    return zip_file
+    
+    
+    
+    
+def brute_force_attack(zip_file):
+    letter=("abcdefghijklmnopqrstuvwxyz")
+    for i in letter:
+        
+    
+    
+    
+    
+    
+    
+def dictionary_attack(zip_file, dict_file):
+    for line in dict_file.readline():
+        password=line.strip()
+        try:
+            zip_file.extractall(pwd=password.encode())
+            print ("password is:" password)
+            exit(0)
+            
+        except:
+            continue
+    
+
+
+
+while:
+        
+      print("Cracking zip files.")
+
+      print("Warning cracking passwords is illegal due to law XXXXX\
+            and has a prison term of XXXXX")
+    
+
+      way=input("What type of cracking ('brute force','dictionary','both','q'): ")
+
+      if way=='brute force':
+          print("Brute Force Cracking")
+          zip_file = open_zip_file()  
+          start = time.process_time()
+          brute_force_attack(zip_file) 
+          end = time.process_time()
+          print("Elapsed time (sec):"(end-start))
+          
+      elif if way == 'dictionary':
+           
+            print("Dictionary Cracking")
+       
+            dict_file = open_dict_file()
+            
+            zip_file = open_zip_file()
+            start = time.process_time()
+            dictionary_attack(zip_file, dict_file) 
+            end = time.process_time()
+            print("Elapsed time (sec):"(end - start))
